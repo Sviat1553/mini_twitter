@@ -52,17 +52,17 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
-        // Check if the post belongs to the current user
-        if ($post->user_id == request()->cookie('user_id')) {
-            // Delete the post
-            $post->delete();
-
-            // Redirect to the post list (index method) with success message
-            return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
+        // Здійснити перевірку: якщо ID користувача допису не співпадає з поточним user_id, повернути помилку
+        if ($post->user_id !== $request->cookie('user_id')) {
+            return redirect()->route('posts.index')->with('error', 'You can only delete your own posts.');
         }
-        // Redirect to the post list (index method) with error message if the post doesn't belong to the current user
-        return redirect()->route('posts.index')->with('error', 'You are not authorized to delete this post.');
+
+        // Видалити допис
+        $post->delete();
+
+        // Перенаправити до списку дописів (метод index)
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
 }

@@ -5,6 +5,15 @@
 </head>
 <body>
 <h1>Posts</h1>
+
+@if (session('error'))
+    <div>{{ session('error') }}</div>
+@endif
+
+@if (session('success'))
+    <div>{{ session('success') }}</div>
+@endif
+
 @foreach ($posts as $post)
     <div>
         <p>{{ $post->content }}</p>
@@ -17,6 +26,8 @@
         @endif
     </div>
 @endforeach
+
 <a href="{{ route('posts.create') }}">Create a new post</a>
+
 </body>
 </html>
