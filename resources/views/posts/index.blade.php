@@ -8,11 +8,11 @@
 <h1>Posts</h1>
 
 @if (session('error'))
-    <div>{{ session('error') }}</div>
+    <div class="notification">{{ session('error') }}</div>
 @endif
 
 @if (session('success'))
-    <div>{{ session('success') }}</div>
+    <div class="notification">{{ session('success') }}</div>
 @endif
 
 @foreach ($posts as $post)

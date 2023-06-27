@@ -6,6 +6,15 @@
 </head>
 <body>
     <h1>Create Post</h1>
+    
+    @if (session('error'))
+        <div class="notification">{{ session('error') }}</div>
+    @endif
+
+    @if (session('success'))
+        <div class="notification">{{ session('success') }}</div>
+    @endif
+
     <form method="POST" action="{{ route('posts.store') }}">
         @csrf
         <label for="content">Post Content:</label>
