@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Mini Twitter</title>
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/styles.css') }}">
 </head>
 <body>
 <h1>Posts</h1>

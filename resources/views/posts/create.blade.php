@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Create Post</title>
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/styles.css') }}">
 </head>
 <body>
     <h1>Create Post</h1>
